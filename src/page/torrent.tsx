@@ -16,6 +16,7 @@ import { useState } from "react";
 import { SendZaps } from "../element/zap";
 import { TorrentTagElement } from "../element/torrent-tag";
 import RelatedTorrents from "../element/related-torrents";
+import TorrentFileList from "../element/file-tree";
 
 export function TorrentPage() {
   const location = useLocation();
@@ -42,7 +43,6 @@ export function TorrentDetail({ item }: { item: TaggedNostrEvent }) {
   const profile = useUserProfile(item.pubkey);
   const torrent = NostrTorrent.fromEvent(item);
   const [sendZap, setShowZap] = useState(false);
-  const [showFileList, setShowFileList] = useState(false);
   const [expandDescription, setExpandDescription] = useState(false);
 
   async function deleteTorrent() {
@@ -100,30 +100,7 @@ export function TorrentDetail({ item }: { item: TaggedNostrEvent }) {
       </div>
       <div className="grid grid-cols-2 gap-4">
         {detailSection()}
-        <div className="bg-neutral-900 p-4 rounded-lg">
-          <h3 className="mb-2">File List ({torrent.files.length} files)</h3>
-          <div className="flex flex-col gap-1">
-            {torrent.files.slice(0, showFileList ? torrent.files.length : 5).map((file, idx) => (
-              <div key={idx} className="pl-1 flex justify-between items-center hover:bg-neutral-700">
-                <div className="flex gap-2 min-w-0 flex-1">
-                  <span>📄</span>
-                  <span className="truncate" title={file.name}>
-                    {file.name}
-                  </span>
-                </div>
-                <div className="flex-shrink-0 ml-2">{FormatBytes(file.size)}</div>
-              </div>
-            ))}
-            {torrent.files.length > 5 && (
-              <button
-                className="mt-2 text-blue-400 hover:text-blue-300 text-left"
-                onClick={() => setShowFileList(!showFileList)}
-              >
-                {showFileList ? "Show less" : `Show ${torrent.files.length - 5} more files`}
-              </button>
-            )}
-          </div>
-        </div>
+        <TorrentFileList torrent={torrent} />
       </div>
       <RelatedTorrents torrent={torrent} />
       {item.content && (
