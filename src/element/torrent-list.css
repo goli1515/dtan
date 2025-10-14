@@ -10,3 +10,50 @@
   border-bottom: 1px solid #222;
   padding: 0px 6px;
 }
+
+/* Category */
+.torrent-list th:nth-child(1),
+.torrent-list td:nth-child(1) {
+  width: 175px;
+}
+
+/* Name - flexes to fill remaining space */
+.torrent-list th:nth-child(2),
+.torrent-list td:nth-child(2) {
+  width: auto;
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* IMDB icon */
+.torrent-list th:nth-child(3),
+.torrent-list td:nth-child(3) {
+  width: 40px;
+}
+
+/* Uploaded date */
+.torrent-list th:nth-child(4),
+.torrent-list td:nth-child(4) {
+  width: 90px;
+}
+
+/* Magnet/POW */
+.torrent-list th:nth-child(5),
+.torrent-list td:nth-child(5) {
+  width: 70px;
+}
+
+/* Size */
+.torrent-list th:nth-child(6),
+.torrent-list td:nth-child(6) {
+  width: 90px;
+}
+
+/* From */
+.torrent-list th:nth-child(7),
+.torrent-list td:nth-child(7) {
+  width: 40px;
+  text-align: center;
+}

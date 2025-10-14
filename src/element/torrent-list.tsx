@@ -1,8 +1,7 @@
 import "./torrent-list.css";
-import { NostrLink, NostrPrefix, TaggedNostrEvent } from "@snort/system";
+import { NostrLink, TaggedNostrEvent } from "@snort/system";
 import { FormatBytes } from "../const";
 import { Link } from "react-router-dom";
-import { Mention } from "./mention";
 import { useMemo, useState } from "react";
 import { NostrTorrent } from "../nostr-torrent";
 import MagnetIcon from "./icon/magnet";
@@ -10,6 +9,7 @@ import IMDB from "../logo/IMDb_logo.svg";
 import { Button } from "./button";
 import useWoT from "../wot";
 import DiamondIcon from "./icon/diamond";
+import { ProfileImage } from "./profile-image";
 
 export function TorrentList({
   items,
@@ -164,7 +164,7 @@ function TorrentTableEntry({ item, currentInfoHash }: { item: TaggedNostrEvent; 
           </Link>
         )}
       </td>
-      <td className="text-neutral-300">{new Date(torrent.publishedAt * 1000).toLocaleString()}</td>
+      <td className="text-neutral-300">{new Date(torrent.publishedAt * 1000).toLocaleDateString()}</td>
       <td>
         <div className="flex items-center gap-2">
           <Link to={torrent.magnetLink} title="Magnet Link">
@@ -179,10 +179,10 @@ function TorrentTableEntry({ item, currentInfoHash }: { item: TaggedNostrEvent; 
         </div>
       </td>
       <td className="whitespace-nowrap text-right text-neutral-300">{FormatBytes(torrent.totalSize)}</td>
-      <td className="text-indigo-300 whitespace-nowrap break-words text-ellipsis">
-        <div className="flex items-center gap-2">
-          <Mention link={new NostrLink(NostrPrefix.PublicKey, item.pubkey)} />
-        </div>
+      <td className="text-indigo-300">
+        <Link to={`/p/${NostrLink.publicKey(item.pubkey).encode()}`}>
+          <ProfileImage pubkey={item.pubkey} size={22} />
+        </Link>
       </td>
     </tr>
   );

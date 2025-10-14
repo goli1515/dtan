@@ -14,6 +14,7 @@ import { SearchPage } from "./page/search";
 import { System, initSystem } from "./system";
 import { RelaysPage } from "./page/relays";
 import LoginPage from "./page/login";
+import { CategoriesPage } from "./page/categories";
 
 const routes = [
   {
@@ -42,6 +43,10 @@ const routes = [
       {
         path: "/search/:term?",
         element: <SearchPage />,
+      },
+      {
+        path: "/categories/:tcat?",
+        element: <CategoriesPage />,
       },
       {
         path: "/relays",
