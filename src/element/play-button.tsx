@@ -20,12 +20,7 @@ export function PlayButton({ magnet, path, size = 16 }: PlayButtonProps) {
       >
         <PlayIcon size={size} />
       </button>
-      <PlayerModal
-        isOpen={isPlayerOpen}
-        onClose={() => setIsPlayerOpen(false)}
-        magnet={magnet}
-        path={path}
-      />
+      <PlayerModal isOpen={isPlayerOpen} onClose={() => setIsPlayerOpen(false)} magnet={magnet} path={path} />
     </>
   );
 }

@@ -1,24 +1,16 @@
-import { LatestTorrents } from "../element/latest";
-import TrendingTorrents from "../element/trending";
+import { Link } from "react-router-dom";
+import { CategoryLatestTorrents } from "../element/category-latest";
+import { Categories } from "../const";
 
 export function HomePage() {
   return (
-    <div className="flex flex-col gap-4">
-      <h3>Trending Movies</h3>
-      <TrendingTorrents
-        tag={{
-          type: "generic",
-          value: "movie",
-        }}
-      />
-      <h3>Trending TV</h3>
-      <TrendingTorrents
-        tag={{
-          type: "generic",
-          value: "tv",
-        }}
-      />
-      <LatestTorrents />
+    <div className="flex flex-col gap-12">
+      <Link to="/categories" className="text-blue-400 hover:text-blue-300 text-sm">
+        Browse Torrents
+      </Link>
+      {Categories.map((category) => (
+        <CategoryLatestTorrents key={category.tag} tags={[category.tag]} title={category.name} limit={10} />
+      ))}
     </div>
   );
 }
