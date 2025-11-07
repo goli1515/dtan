@@ -3,6 +3,7 @@ import { NostrTorrent, TorrentTag } from "../nostr-torrent";
 
 import IMDB from "../logo/IMDb_logo.svg";
 import TPB from "../logo/tpb.jpg";
+import Nyaa from "../logo/nyaa.png";
 import { ReactNode } from "react";
 
 export function TorrentTagElement({ tag }: { tag: TorrentTag }) {
@@ -32,6 +33,15 @@ export function TorrentTagElement({ tag }: { tag: TorrentTag }) {
           <a href={url} target="_blank" className="flex gap-2 items-center" title={`Open external link: ${url}`}>
             <img src={TPB} className="h-6 rounded-full" />
             <span>TPB</span>
+          </a>,
+        );
+      }
+      case "nyaa": {
+        const url = NostrTorrent.externalDbLink(tag);
+        return wrap(
+          <a href={url} target="_blank" className="flex gap-2 items-center" title={`Open external link: ${url}`}>
+            <img src={Nyaa} className="h-6 rounded-full" />
+            <span>Nyaa</span>
           </a>,
         );
       }

@@ -8,7 +8,7 @@ export interface TorrentFile {
 }
 
 export interface TorrentTag {
-  readonly type: "tcat" | "newznab" | "tmdb" | "ttvdb" | "imdb" | "mal" | "anilist" | "tpb" | "generic";
+  readonly type: "tcat" | "newznab" | "tmdb" | "ttvdb" | "imdb" | "mal" | "anilist" | "tpb" | "generic" | "nyaa";
   readonly value: string;
 }
 
@@ -127,6 +127,8 @@ export class NostrTorrent {
       }
       case "tpb":
         return `https://thepiratebay.org/description.php?id=${tag.value}`;
+      case "nyaa":
+        return `https://nyaa.si/view/${tag.value}`;
     }
   }
 
