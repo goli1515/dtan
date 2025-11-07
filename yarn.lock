@@ -3036,6 +3036,8 @@ __metadata:
     eslint: "npm:^9.31.0"
     eslint-plugin-react-hooks: "npm:^5.2.0"
     eslint-plugin-react-refresh: "npm:^0.4.20"
+    marked: "npm:^17.0.0"
+    marked-footnote: "npm:^1.4.0"
     postcss: "npm:^8.5.6"
     prettier: "npm:^3.6.2"
     qr-code-styling: "npm:^1.9.2"
@@ -4714,6 +4716,24 @@ __metadata:
     promise-retry: "npm:^2.0.1"
     ssri: "npm:^12.0.0"
   checksum: 10c0/c40efb5e5296e7feb8e37155bde8eb70bc57d731b1f7d90e35a092fde403d7697c56fb49334d92d330d6f1ca29a98142036d6480a12681133a0a1453164cb2f0
+  languageName: node
+  linkType: hard
+
+"marked-footnote@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "marked-footnote@npm:1.4.0"
+  peerDependencies:
+    marked: ">=7.0.0"
+  checksum: 10c0/9feb37756ce923d247d23db09b49b284bd5d7bfb5a2af09f359a6fe3cbe26d836c12b2fce4a48bd3766b0ea71383d3d1e51ebd61931c17c892f0277c2a478eb1
+  languageName: node
+  linkType: hard
+
+"marked@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "marked@npm:17.0.0"
+  bin:
+    marked: bin/marked.js
+  checksum: 10c0/e7f02b59356e50d751f57e9715ca29c5da580459450ae2ba2e0cfb286dd972d57fdb7ad9945c742ceb91a0bf65d2ff9e2f2fdc4094ae2a8621173c9e4a00b4f8
   languageName: node
   linkType: hard
 

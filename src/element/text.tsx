@@ -29,13 +29,10 @@ export function Text({ content, tags, wrap = true }: { content: string; tags: Ar
     }
   }
 
-  if (wrap) {
-    return <div className="text">{frags.map(renderFrag)}</div>;
-  }
   return frags.map(renderFrag);
 }
 
-function ImageFrag({ url }: { url: string }) {
+export function ImageFrag({ url }: { url: string }) {
   const [error, setError] = useState(false);
 
   // use plain link if image preview fails

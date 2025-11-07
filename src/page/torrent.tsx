@@ -1,5 +1,5 @@
 import { unwrap } from "@snort/shared";
-import { NostrLink, RequestBuilder, TaggedNostrEvent, parseNostrLink } from "@snort/system";
+import { RequestBuilder, TaggedNostrEvent, parseNostrLink } from "@snort/system";
 import { useRequestBuilder, useUserProfile } from "@snort/system-react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { FormatBytes, TorrentKind } from "../const";
@@ -7,7 +7,6 @@ import { ProfileImage } from "../element/profile-image";
 import { useLogin } from "../login";
 import { Button } from "../element/button";
 import { Comments } from "../element/comments";
-import { Text } from "../element/text";
 import { NostrTorrent } from "../nostr-torrent";
 import CopyIcon from "../element/icon/copy";
 import MagnetIcon from "../element/icon/magnet";
@@ -17,6 +16,7 @@ import { SendZaps } from "../element/zap";
 import { TorrentTagElement } from "../element/torrent-tag";
 import RelatedTorrents from "../element/related-torrents";
 import TorrentFileList from "../element/file-tree";
+import { Markdown } from "../element/markdown";
 
 export function TorrentPage() {
   const location = useLocation();
@@ -110,7 +110,7 @@ export function TorrentDetail({ item }: { item: TaggedNostrEvent }) {
             <pre
               className={`font-mono text-sm overflow-y-auto ${!expandDescription ? "max-h-32 overflow-hidden" : ""}`}
             >
-              <Text content={item.content} tags={item.tags} wrap={false}></Text>
+              <Markdown content={item.content} tags={item.tags} />
             </pre>
             {item.content.length > 200 && (
               <button
