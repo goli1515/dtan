@@ -1,4 +1,5 @@
-import { NostrLink, NostrPrefix } from "@snort/system";
+import { NostrPrefix } from "@snort/shared";
+import { NostrLink } from "@snort/system";
 import { useUserProfile } from "@snort/system-react";
 import { CSSProperties, HTMLProps } from "react";
 import { Link } from "react-router-dom";

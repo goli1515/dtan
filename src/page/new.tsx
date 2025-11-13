@@ -5,8 +5,8 @@ import { Button } from "../element/button";
 import { useLogin } from "../login";
 import { dedupe, unixNow } from "@snort/shared";
 import * as bencode from "../bencode";
-import { sha1 } from "@noble/hashes/sha1";
-import { bytesToHex } from "@noble/hashes/utils";
+import { sha1 } from "@noble/hashes/legacy.js";
+import { bytesToHex } from "@noble/hashes/utils.js";
 import { Link, useNavigate } from "react-router-dom";
 import { EventExt, NostrLink } from "@snort/system";
 import { NostrTorrent, TorrentTag } from "../nostr-torrent";
@@ -138,6 +138,7 @@ export function NewPage() {
             value: obj.tcat,
           },
         ]),
+        16
       );
       const ev = torrent.toEvent(login.publicKey);
       ev.tags.push(["alt", `${obj.name}\nTorrent published on https://dtan.xyz`]);
