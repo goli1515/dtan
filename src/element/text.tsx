@@ -2,6 +2,7 @@ import { ParsedFragment, transformText, tryParseNostrLink } from "@snort/system"
 import { useMemo, useState } from "react";
 import { Mention } from "./mention";
 import { Link } from "react-router-dom";
+import { DefaultImgProxy, proxyImg } from "@snort/shared";
 
 export function Text({ content, tags, wrap = true }: { content: string; tags: Array<Array<string>>; wrap?: boolean }) {
   const frags = useMemo(() => transformText(content, tags), [content, tags]);
@@ -43,5 +44,5 @@ export function ImageFrag({ url }: { url: string }) {
       </Link>
     );
   }
-  return <img src={url} alt={url} style={{ maxHeight: "250px" }} onError={() => setError(true)} />;
+  return <img src={proxyImg(url, DefaultImgProxy)} style={{ maxHeight: "250px" }} onError={() => setError(true)} />;
 }
