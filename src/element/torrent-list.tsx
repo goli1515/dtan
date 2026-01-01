@@ -181,7 +181,7 @@ function TorrentTableEntry({ item, currentInfoHash }: { item: TaggedNostrEvent; 
       <td className="whitespace-nowrap text-right text-neutral-300">{FormatBytes(torrent.totalSize)}</td>
       <td className="text-indigo-300">
         <Link to={`/p/${NostrLink.publicKey(item.pubkey).encode()}`}>
-          <ProfileImage pubkey={item.pubkey} size={22} />
+          <ProfileImage pubkey={item.pubkey} size={22} link={false} />
         </Link>
       </td>
     </tr>

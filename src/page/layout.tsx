@@ -75,7 +75,7 @@ function LoggedInHeader({ pubkey }: { pubkey: string }) {
   return (
     <div className="flex items-center gap-2">
       <Link to={`/p/${NostrLink.publicKey(pubkey).encode()}`}>
-        <ProfileImage pubkey={pubkey} />
+        <ProfileImage pubkey={pubkey} link={false} />
       </Link>
       <Link to="/new">
         <Button type="primary">+ Create</Button>
