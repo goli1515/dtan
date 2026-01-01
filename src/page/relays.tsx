@@ -2,10 +2,27 @@ import { useState } from "react";
 import { Button } from "../element/button";
 import { useRelays } from "../relays";
 import { sanitizeRelayUrl } from "@snort/shared";
+import { workerRelay } from "../system";
 
 export function RelaysPage() {
   const relays = useRelays();
   const [newRelay, setNewRelay] = useState("");
+  const [clearing, setClearing] = useState(false);
+
+  const clearCache = async () => {
+    if (!confirm("Are you sure you want to clear all cached data?")) return;
+    setClearing(true);
+    try {
+      await workerRelay.wipe();
+      alert("Cache cleared successfully!");
+    } catch (e) {
+      console.error(e);
+      alert("Failed to clear cache");
+    } finally {
+      setClearing(false);
+    }
+  };
+
   return (
     <>
       <h2>Relays</h2>
@@ -41,6 +58,10 @@ export function RelaysPage() {
           Add
         </Button>
       </div>
+      <br />
+      <Button type="danger" onClick={clearCache} disabled={clearing}>
+        {clearing ? "Clearing..." : "Clear Cache"}
+      </Button>
     </>
   );
 }

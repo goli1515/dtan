@@ -10,7 +10,7 @@ const hasWasm = import.meta.env.VITE_DISABLE_WASM ? false : "WebAssembly" in glo
 const workerScript = import.meta.env.DEV
   ? new URL("@snort/worker-relay/dist/esm/worker.mjs", import.meta.url)
   : new WorkerVite();
-const workerRelay = new WorkerRelayInterface(workerScript);
+export const workerRelay = new WorkerRelayInterface(workerScript);
 
 export const WasmOptimizer = {
   ...DefaultOptimizer,
